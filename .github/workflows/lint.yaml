@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - main
+      - v1
+  pull_request:
+    branches:
+      - "**"
+name: Linter
+jobs:
+  golangci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src/github.com/nikiminoj/head
+      - uses: golangci/golangci-lint-action@v6
+        with:
+          working-directory: src/github.com/nikiminoj/head
